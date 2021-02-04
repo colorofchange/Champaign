@@ -27,6 +27,8 @@ If you're interested in collaborating on the project with us, or have ideas or r
 * Run the test suite to make sure everything's setup correctly: `bundle
   exec rake spec`
 
+* To run locally from your terminal run `bundle exec rails server -p 3000 -b 0.0.0.0`
+
 ## Champaign Configuration
 
 Configuration files are under `config/settings` directory. There's one
