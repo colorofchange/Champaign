@@ -24,6 +24,7 @@ If you're interested in collaborating on the project with us, or have ideas or r
 * Run the seed task: `bundle exec rake db:seed`
 * Seed the database with liquid layouts: `bundle exec rake champaign:seed_liquid`
 * Seed the database with tags and languages from your ActionKit integration: `bundle exec rake action_kit:import_tags` and `bundle exec rake action_kit:import_languages`
+* To get Ruby Money to work, create an account here → https://openexchangerates.org/signup/free and add your app ID in line 110 of config/settings/development.yml for the oxr_app_id field
 * Run the test suite to make sure everything's setup correctly: `bundle
   exec rake spec`
 
