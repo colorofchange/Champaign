@@ -123,8 +123,6 @@
 <script type="text/javascript">
   $(document).ready(function(){
     var APP_ID = '514456635236116';
-
-
     var TRANSLATIONS = {
       EN: {
         DEFAULT_SALUTATION: 'Friend',
@@ -160,7 +158,6 @@
       LQ_USER_AKID: '',
       LQ_SIGNOFF: ''
     };
-
     window.LIQUID_SUBSTITUTIONS = {
       EN: _.extend(_.clone(DEFAULT_LIQUID_SUBSTITUTIONS), TRANSLATIONS.EN, {
         LQ_SALUTATION: '{' + '{ user.first_name|capfirst|default:"'+TRANSLATIONS.EN.DEFAULT_SALUTATION+'" }}'
@@ -183,8 +180,6 @@
         LQ_SALUTATION: TRANSLATIONS.FR.DEFAULT_SALUTATION
       })
     };
-
-
     var $shareHref = $('[name="share_href"]');
     var $redirectUri = $('[name="redirect_uri"]');
     var $mailingId = $('[name="mailing_id"]');
@@ -195,7 +190,6 @@
     var $spreaderSignoff = $('[name="prompt_email_signoff"]');
     var $shareEmailCta = $('[name="share_email_cta"]');
     var akButtonTemplate = $('#ak-button-template').html();
-
     var $outputs = {}
     _.each(['ak-button', 'champaign-button', 'full-email'], function(category) {
       $outputs[category] = {
@@ -204,9 +198,7 @@
         code: $('.output-dependent--'+category+' .output__code'),
       }
     });
-
     var $linkOutput = $('[name="link_output"]');
-
     var shareHref = function(usesAk, medium) {
       var href = new URI($shareHref.val());
       var mailingId = $mailingId.val();
@@ -219,27 +211,22 @@
       if (usesAk) href = href.addSearch('referring_akid', 'LQ_USER_AKID');
       return href.toString();
     }
-
     var hashtag = function() {
       var tag = $hashtag.val();
       return (tag.length === 0 || tag[0] === '#') ? tag : '#' + tag;
     }
-
     var populateCodeFromPreview = function(category) {
       $outputs[category].code.val($outputs[category].preview.html().trim());
     }
-
     var updateButton = function(category, shareLink, locale) {
       $outputs[category].preview.html($outputs[category].template);
       $outputs[category].preview.find('a').attr('href', shareLink);
       handleLiquid($outputs[category].preview, false, locale);
       populateCodeFromPreview(category);
     }
-
     var smartFormat = function(text) {
       return text.replace(/\n/g, '<br>');
     }
-
     var handleLiquid = function($el, usesAk, locale) {
       var substitutionSource = usesAk ? LIQUID_SUBSTITUTIONS[locale] : LIQUIDLESS_SUBSTITUTIONS[locale];
       var fullHtml = $el.html();
@@ -248,7 +235,6 @@
       });
       $el.html(fullHtml);
     }
-
     var updateMailingHtml = function(category, usesAk, locale) {
       $outputs[category].preview.html($outputs[category].template);
       var buttonHtml = $outputs['ak-button'].preview.html();
@@ -256,7 +242,6 @@
       var spreaderShare = smartFormat($spreaderShare.val());
       var spreaderSignoff = smartFormat($spreaderSignoff.val());
       var shareLink = shareHref(usesAk, 'email');
-
       $outputs[category].preview.find('.full-email-template__button-container').html(buttonHtml);
       $outputs[category].preview.find('.full-email-template__spreader-prompt-container').html(spreaderPrompt);
       $outputs[category].preview.find('.full-email-template__spreader-share-container').html(spreaderShare);
@@ -264,10 +249,8 @@
       $outputs[category].preview.find('a.full-email-template__spreader-share-cta').attr('href', shareLink);
       $outputs[category].preview.find('a.full-email-template__spreader-share-cta').text($shareEmailCta.val());
       handleLiquid($outputs[category].preview, usesAk, locale);
-
       populateCodeFromPreview(category);
     }
-
     var generateLink = function(usesAk, locale) {
       var link = new URI('https://www.facebook.com/dialog/share').query({
         app_id: APP_ID,
@@ -280,26 +263,21 @@
       var substitutionSource = usesAk ? LIQUID_SUBSTITUTIONS[locale] : LIQUIDLESS_SUBSTITUTIONS[locale];
       return link.toString().replace(/LQ_USER_AKID/, substitutionSource.LQ_USER_AKID);
     }
-
     var updatePreviews = function() {
       var usesAk = $('input[type=radio][name=usesAk]:checked').val() == 'true';
       var locale = $('input[type=radio][name=language]:checked').val();
       var shareLink = generateLink(usesAk, locale);
-
       $linkOutput.val(shareLink);
       $linkTest.attr('href', shareLink);
-
       updateButton('ak-button', shareLink, locale);
       updateButton('champaign-button', shareLink, locale);
       updateMailingHtml('full-email', usesAk, locale);
     }
-
     var changeOutput = function() {
       var desired = $('input[type=radio][name=desiredOutput]:checked').val();
       $('.output-dependent').addClass('hidden-closed');
       $('.output-dependent.output-dependent--'+desired).removeClass('hidden-closed');
     }
-
     $('.spreader-form__input').on('keyup', updatePreviews);
     $('input[type=radio][name=usesAk]').change(updatePreviews);
     $('input[type=radio][name=language]').change(updatePreviews);

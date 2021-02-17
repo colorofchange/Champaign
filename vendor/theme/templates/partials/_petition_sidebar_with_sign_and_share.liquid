@@ -53,12 +53,10 @@
           bucket:           chmp.personalization.urlParams.bucket,
           prefill:          true
         });
-
         chmp.myPetition      = new chmp.Petition({followUpUrl: "{{ follow_up_url }}"});
         chmp.myOverlayToggle = new chmp.OverlayToggle();
         chmp.myThermometer   = new chmp.Thermometer(window.champaign.personalization.actionsThermometer);
         chmp.mySidebar       = new chmp.Sidebar({petitionTextMinHeight: 120, baseClass: 'petition-bar'});
-
         window.champaign.mySticky = new window.champaign.DesktopSticky({extra_class: 'petition'});
       });
     </script>

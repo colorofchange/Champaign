@@ -1,8 +1,22 @@
-$teal: #00c0cf;
+// COC colors
+$coc_orange: #FA521A;
+$coc_red: #BF2D21;
+$coc_yellow: #E2AF07;
+$coc_green: #428E2B;
+$coc_blue: #38A5D6;
+$coc_dark_grey: #515968;
+$coc_light_grey: #A3AFB5;
+$coc_purple: #5b3872;
+$coc_lightest_grey: #E8E8E8;
+
+
+$teal: #38A5D6;
+//#00c0cf;
 $dark-teal: #058bb0;
 $night-sky: #1c2333;
 $navy: #172340;
-$orange: #f8492d;
+$orange: #FA521A;
+//#f8492d;
 $light-orange: lighten($orange, 33%);
 $email: #e3e3e3;
 

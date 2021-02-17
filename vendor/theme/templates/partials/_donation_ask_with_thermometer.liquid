@@ -1,15 +1,12 @@
 {% if plugins.donations_thermometer[ref].active %}
     <style type="text/css">
-
         .inline-thermometer {
             width: 80%;
             max-width: 600px;
             margin: 0 auto;
             margin-bottom: 50px;
         }
-
         .AmountSelection-container .Thermometer { display: none; }
-
         @media screen and (min-width: 992px){
             .petition-and-scroll-to-share__yes-no-question-wrapper .two-step__question p {
                 font-size: 30px;
@@ -41,7 +38,6 @@
     <script type="text/javascript">
     $(function () {
         window.champaign.store.subscribe(_.throttle(updateRemainder, 1000));
-
         function updateRemainder () {
             var state = window.champaign.store.getState();
             var currency = state.fundraiser.currency;

@@ -69,7 +69,7 @@
       }
       &::placeholder {
         color: rgba(0, 0, 0, 0.4);
-        font-family: Montserrat;
+        font-family: Metric;
       }
     }
     input[type='radio'] {
@@ -140,7 +140,7 @@
       padding-top: 25px;
       -webkit-appearance: none;
       border-radius: 0;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Metric', sans-serif;
     }
     @media (max-width: 420px) {
       input:not([type='checkbox']):not([type='radio']) {
@@ -319,7 +319,7 @@ label.checkbox-label {
     line-height: 21px;
     -webkit-appearance: none;
     border-radius: 0;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Metric', sans-serif;
   }
 }
 .form--big .sweet-placeholder .selectize-control.single .selectize-input {

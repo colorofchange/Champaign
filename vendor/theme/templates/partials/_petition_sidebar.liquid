@@ -44,21 +44,18 @@
     var petitionButtonWrapper = '.button-wrapper';
     var petitionFinePrint = '.petition-bar__fine-print';
     var petitionFormWrapper = ".form-wrapper";
-
     function removeFloatingProp() {
       $(petitionFinePrint).css('margin-bottom', '0');
       $(petitionButtonWrapper).css('position', 'relative');
       $(petitionButton).css({'left': 'unset', 'max-width': 'unset'});
       $(petitionFormWrapper).css("margin-bottom", "0");
     }
-
     function applyFloatingProp() {
       $(petitionFinePrint).css('margin-bottom', '110px');
       $(petitionButtonWrapper).css('position', 'absolute');
       $(petitionButton).css({'left': '26px', 'max-width': 'calc(100% - 56px)'});
       $(petitionFormWrapper).css("margin-bottom", "150px");
     }
-
     // Function to apply floating property to button or remove it based on the scroll position
     function pushButtonDown() {
       if($(petitionComponent).prop('scrollTop') > 10) {
@@ -69,7 +66,6 @@
     }
     $(document).ready(function(){
       var chmp = window.champaign; // convenience binding
-
       chmp.myActionForm  = new chmp.ActionForm({
         variant:          "{{ variant }}",
         member:           chmp.personalization.member,
@@ -84,14 +80,11 @@
         prefill:          true,
         async:            {{ async | default: false }}
       });
-
       chmp.myOverlayToggle = new chmp.OverlayToggle();
       chmp.myThermometer   = new chmp.Thermometer(window.champaign.personalization.actionsThermometer);
       chmp.mySidebar       = new chmp.Sidebar({petitionTextMinHeight: 120, baseClass: 'petition-bar'});
-
       window.champaign.mySticky = new window.champaign.DesktopSticky({extra_class: 'petition'});
     });
-
     $(petitionComponent).ready(function() {
     	// Remove floating button if the petition component doesnt have any scroll (if the screen is large enough then entire of petition component is visible)
       	if($(petitionComponent).prop('scrollHeight') === $(petitionComponent).prop('clientHeight')) {removeFloatingProp();}

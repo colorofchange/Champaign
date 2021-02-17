@@ -55,34 +55,27 @@
         revealMobileFundraiser();
       }
     });
-
     window.ee.on('fundraiser:transaction_success', function(responseData, formData) {
       var followUpUrl, redirected;
-
       followUpUrl = new URI(responseData.follow_up_url || "{{ follow_up_url }}");
       followUpUrl.addQuery('donated', 'true');
       redirected = formData.storeInVault && window.champaign.redirectors.RegisterMemberRedirector.attemptRedirect(followUpUrl.toString(), formData.member)
-
       if(!redirected) {
         showThankYouMessage();
       }
     });
-
     checkIfAlreadyDonated();
-
     function checkIfAlreadyDonated() {
       var regex = /donated/i;
       if(window.champaign.personalization.urlParams['donated'] !== undefined) {
         showThankYouMessage();
       }
     }
-
     function showThankYouMessage() {
       $('.thank-you__cta').addClass('hidden-closed');
       $('.two-step__after-donation').removeClass('hidden-closed');
       $('.two-step__question').addClass('hidden-closed');
     }
-
     function revealMobileFundraiser() {
       $('.overlay-toggle__mobile-view')
         .removeClass('overlay-toggle__mobile-view--closed')

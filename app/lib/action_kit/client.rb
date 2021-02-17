@@ -7,7 +7,7 @@ module ActionKit
     def client(verb, path, params)
       HTTParty.send(
         verb,
-        "#{Settings.ak_api_url}/#{path}/",
+        "#{Settings.ak_api_url}/#{path}",
         query: params[:params],
         basic_auth: auth
       )

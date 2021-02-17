@@ -1,4 +1,9 @@
-$default-fonts: 'Montserrat', -apple-system, system-ui, BlinkMacSystemFont,
+@font-face {
+  font-family: Metric;
+  src: local('Metric-Bold.woff2');
+}
+
+$default-fonts: 'Metric', -apple-system, system-ui, BlinkMacSystemFont,
   'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 
 html {
