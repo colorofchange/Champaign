@@ -1,23 +1,23 @@
 # General Champaign settings.
-secret_key_base: AIzaSyDP0JurlX70eK4lvRFPSElHZ_KCCKS4JQw
-omniauth_client_secret: X7jaYNN8isUvAXbrRwatzCw_
-omniauth_client_id: 443756196572-28963hdq13e86canos6e3cmf2c6k630s.apps.googleusercontent.com
+secret_key_base: secret_key_base
+omniauth_client_secret: omniauth_client_secret
+omniauth_client_id: omniauth_client_id
 liquid_templating_source: db
 oauth_domain_whitelist:
-  - 'colorofchange.org'
+  - 'your-domain.org'
 
 aws_region: 'us-west-2'
-aws_account_id: '814765110037' # set in development.local
-sqs_queue_url: 'https://sqs.us-west-2.amazonaws.com/814765110037/champaign-queue'
-s3_host_name: 'coc-champaign.s3-website-us-west-2.amazonaws.com'
+aws_account_id: '' # set in development.local
+sqs_queue_url: 'sqs-queue-url'
+s3_host_name: 's3-host'
 ak_processor_url: 'url of your worker that subscribes to your SQS and ships messages to AK'
 action_kit:
   akid_secret: secret-sauce
 
 # Direct ActionKit Connection variables.
-ak_api_url: 'https://act.colorofchange.org/rest/v1/'
-ak_username: 'archana.ahlawat'
-ak_password: 'orNU0bjMf6yj'
+ak_api_url: 'http://actionkit_api_url.com'
+# ak_username: username
+# ak_password: password
 default_currency: 'USD'
 
 # Assets config
@@ -82,9 +82,9 @@ robots: 'staging'
 instantiate_stdout_logger: true
 
 # Defines domain for page URLs
-host: 'http://localhost:3000'
+host: 'http://actions.example.com'
 
-home_page_url: '/users/sign_in'
+home_page_url: 'http://example.com'
 default_mailer_address: 'info@example.org'
 smtp:
   user_name: 'smtp username'
@@ -107,7 +107,7 @@ twilio:
 development_database: 'champaign'
 
 member_services_secret: 'hotpotato!'
-oxr_app_id: '34489a6280f545c4a55ffcaa63c77b98' # get app id from https://openexchangerates.org
+oxr_app_id: '' # get app id from https://openexchangerates.org
 
 mailer_topic_arn:
 api_key: ''
